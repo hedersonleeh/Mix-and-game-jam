@@ -36,6 +36,9 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField, ReadOnly, BoxGroup("States")] private bool isDashing;
     [SerializeField, ReadOnly, BoxGroup("States")] private bool wallCheckInAir = false;
 
+    public bool IsGrounded { get { return isGrounded; } }
+    public bool IsWallJumping { get { return isWallJumping; } }
+    public bool IsDashing { get { return isDashing; } }
 
     private Vector3 targetVelocity;
     private Rigidbody2D rb;
@@ -194,8 +197,11 @@ public class CharacterController2D : MonoBehaviour
         yield return new WaitForSeconds(time);
         isDashing = false;
     }
-    public bool IsGrounded { get { return isGrounded; } }
-    public bool IsWallJumping { get { return isWallJumping; } }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawRay(transform.position, transform.right * wallCheck);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(bottomCheck.position, checkBoxSize);
+    }
 
-    public bool IsDashing { get { return isDashing; } }
 }
