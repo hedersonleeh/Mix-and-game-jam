@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private bool jump;
     private bool climb;
     private bool dash;
+    private bool grap;
     float moveSpeed;
     // Use this for initialization
     private void Awake()
@@ -38,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         climb = Input.GetButton("Fire1");
         speed = Input.GetButton("Fire3") ? runSpeed : moveSpeed;
         dash = Input.GetButtonDown("Fire2");
+        grap = Input.GetButtonDown("Fire4");
+
     }
     private void FixedUpdate()
     {
@@ -51,4 +54,5 @@ public class PlayerMovement : MonoBehaviour
     public bool Jump { get { return jump; } }
 
     public bool Dash { get { return dash; } }
+    public bool Grap { get { return grap; } }
 }

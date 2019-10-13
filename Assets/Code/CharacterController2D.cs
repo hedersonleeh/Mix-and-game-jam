@@ -185,6 +185,7 @@ public class CharacterController2D : MonoBehaviour
         rb.velocity = new Vector2(wallJumpTargetVelocity.x * Time.deltaTime, wallJumpForce.y * Time.deltaTime);
 
     }
+    
     IEnumerator DisableMove(float timeDisable)
     {
         airControl = false;
